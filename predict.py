@@ -139,3 +139,5 @@ class Predictor(BasePredictor):
             print(subprocess.check_output(args, encoding="utf-8"))
 
         print(time() - s)
+
+        return Path("results/result_voice.mp4")
