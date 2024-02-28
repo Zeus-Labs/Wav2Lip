@@ -64,7 +64,8 @@ class Predictor(BasePredictor):
     def setup(self):
         inference.do_load("checkpoints/wav2lip_gan.pth")
 
-    def predict(self,
+    def predict(
+        self,
         face: Path = Input(description="video/image that contains faces to use"),
         audio: Path = Input(description="video/audio file to use as raw audio source"),
         pads: str = Input(
@@ -85,7 +86,7 @@ class Predictor(BasePredictor):
             description="Output video height. Best results are obtained at 480 or 720",
             default=480,
         ),
-        ) -> Path:
+    ) -> Path:
         try:
             os.remove("results/result_voice.mp4")
         except FileNotFoundError:
