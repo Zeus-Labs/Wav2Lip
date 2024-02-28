@@ -277,14 +277,16 @@ def main():
 
     print("wav2lip prediction time:", time() - s)
 
-    subprocess.check_call([
-        "ffmpeg", "-y",
-        # "-vsync", "0", "-hwaccel", "cuda", "-hwaccel_output_format", "cuda",
-        "-i", "temp/result.avi",
-        "-i", args.audio,
-        # "-c:v", "h264_nvenc",
-        args.outfile,
-    ])
+    # subprocess.check_call([
+    #     "ffmpeg", "-y",
+    #     # "-vsync", "0", "-hwaccel", "cuda", "-hwaccel_output_format", "cuda",
+    #     "-i", "temp/result.avi",
+    #     "-i", args.audio,
+    #     # "-c:v", "h264_nvenc",
+    #     args.outfile,
+    # ])
+    command = 'ffmpeg -y -i {} -i {} -strict -2 -q:v 1 {}'.format(args.audio, 'temp/result.avi', args.outfile)
+    subprocess.call(command, shell=platform.system() != 'Windows')
 
 model = detector = detector_model = None
 
