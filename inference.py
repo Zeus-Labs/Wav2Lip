@@ -60,6 +60,8 @@ parser.add_argument('--nosmooth', default=False, action='store_true',
                     help='Prevent smoothing face detections over a short temporal window')
 
 
+args = parser.parse_args()
+
 def get_smoothened_boxes(boxes, T):
     for i in range(len(boxes)):
         if i + T > len(boxes):
@@ -320,6 +322,5 @@ def face_rect(images):
 
 
 if __name__ == '__main__':
-    args = parser.parse_args()
     do_load(args.checkpoint_path)
     main()
