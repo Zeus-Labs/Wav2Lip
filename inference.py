@@ -322,5 +322,6 @@ def face_rect(images):
 
 
 if __name__ == '__main__':
+    print('Checking argue outfile value {}.'.format(args.outfile))
     do_load(args.checkpoint_path)
     main()
