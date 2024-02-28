@@ -38,8 +38,8 @@ parser.add_argument('--pads', nargs='+', type=int, default=[0, 10, 0, 0],
 
 parser.add_argument('--wav2lip_batch_size', type=int, help='Batch size for Wav2Lip model(s)', default=128)
 
-# parser.add_argument('--resize_factor', default=1, type=int,
-#             help='Reduce the resolution by this factor. Sometimes, best results are obtained at 480p or 720p')
+parser.add_argument('--resize_factor', default=1, type=int,
+             help='Reduce the resolution by this factor. Sometimes, best results are obtained at 480p or 720p')
 
 parser.add_argument('--out_height', default=480, type=int,
             help='Output video height. Best results are obtained at 480 or 720')
@@ -59,8 +59,6 @@ parser.add_argument('--rotate', default=False, action='store_true',
 parser.add_argument('--nosmooth', default=False, action='store_true',
                     help='Prevent smoothing face detections over a short temporal window')
 
-
-args = parser.parse_args()
 
 def get_smoothened_boxes(boxes, T):
     for i in range(len(boxes)):
@@ -279,16 +277,14 @@ def main():
 
     print("wav2lip prediction time:", time() - s)
 
-    # subprocess.check_call([
-    #     "ffmpeg", "-y",
-    #     # "-vsync", "0", "-hwaccel", "cuda", "-hwaccel_output_format", "cuda",
-    #     "-i", "temp/result.avi",
-    #     "-i", args.audio,
-    #     # "-c:v", "h264_nvenc",
-    #     args.outfile,
-    # ])
-    command = 'ffmpeg -y -i {} -i {} -strict -2 -q:v 1 {}'.format(args.audio, 'temp/result.avi', args.outfile)
-    subprocess.call(command, shell=platform.system() != 'Windows')
+    subprocess.check_call([
+        "ffmpeg", "-y",
+        # "-vsync", "0", "-hwaccel", "cuda", "-hwaccel_output_format", "cuda",
+        "-i", "temp/result.avi",
+        "-i", args.audio,
+        # "-c:v", "h264_nvenc",
+        args.outfile,
+    ])
 
 model = detector = detector_model = None
 
@@ -322,6 +318,6 @@ def face_rect(images):
 
 
 if __name__ == '__main__':
-    print('Checking argue outfile value {}.'.format(args.outfile))
+    args = parser.parse_args()
     do_load(args.checkpoint_path)
     main()
