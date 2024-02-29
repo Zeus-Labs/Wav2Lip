@@ -93,14 +93,14 @@ class Predictor(BasePredictor):
             pass
 
         print("Is cuda available {} ?".format(torch.cuda.is_available()))
-        print(face)
+        print("Face: ", face)
         face_ext = os.path.splitext(face)[-1]
-        print(face_ext)
+        print("Face ext: ", face_ext)
         if face_ext not in [".mp4", ".mov", ".png" , ".jpg" , ".jpeg" , ".gif", ".mkv", ".webp"]:
             raise ValueError(f'Unsupported face format {face_ext!r}')
-        print(audio)
+        print("Audio: ", audio)
         audio_ext = os.path.splitext(audio)[-1]
-        print(audio_ext)
+        print("Audio ext: ", audio_ext)
         if audio_ext not in [".wav", ".mp3"]:
             raise ValueError(f'Unsupported audio format {audio_ext!r}')
 
