@@ -92,11 +92,14 @@ class Predictor(BasePredictor):
         except FileNotFoundError:
             pass
 
+        print("Is cuda available {} ?".format(torch.cuda.is_available()))
         face_ext = os.path.splitext(face)[-1]
+        print(face_ext)
         if face_ext not in [".mp4", ".mov", ".png" , ".jpg" , ".jpeg" , ".gif", ".mkv", ".webp"]:
             raise ValueError(f'Unsupported face format {face_ext!r}')
 
         audio_ext = os.path.splitext(audio)[-1]
+        print(audio_ext)
         if audio_ext not in [".wav", ".mp3"]:
             raise ValueError(f'Unsupported audio format {audio_ext!r}')
 
