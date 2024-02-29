@@ -29,8 +29,8 @@ build:
 
   # commands run after the environment is setup
   run:
-    - mkdir -p /src/checkpoints/ && wget -O /src/checkpoints/wav2lip_gan.pth 'https://iiitaphyd-my.sharepoint.com/personal/radrabha_m_research_iiit_ac_in/_layouts/15/download.aspx?share=EdjI7bZlgApMqsVoEUUXpLsBxqXbn5z8VTmoxp55YNDcIA'
     - mkdir -p /src/checkpoints/ && wget -O /src/checkpoints/mobilenet.pth 'https://github.com/elliottzheng/face-detection/releases/download/0.0.1/mobilenet0.25_Final.pth'
+    - mkdir -p /src/checkpoints/ && wget -O /src/checkpoints/wav2lip_gan.pth 'https://iiitaphyd-my.sharepoint.com/personal/radrabha_m_research_iiit_ac_in/_layouts/15/download.aspx?share=EdjI7bZlgApMqsVoEUUXpLsBxqXbn5z8VTmoxp55YNDcIA'
     - pip install git+https://github.com/elliottzheng/batch-face.git@master
     - echo "Environment is ready!"
 
