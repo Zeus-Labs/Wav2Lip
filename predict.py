@@ -97,7 +97,7 @@ class Predictor(BasePredictor):
         print(face_ext)
         if face_ext not in [".mp4", ".mov", ".png" , ".jpg" , ".jpeg" , ".gif", ".mkv", ".webp"]:
             raise ValueError(f'Unsupported face format {face_ext!r}')
-
+        print(audio)
         audio_ext = os.path.splitext(audio)[-1]
         print(audio_ext)
         if audio_ext not in [".wav", ".mp3"]:
