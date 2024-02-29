@@ -294,7 +294,7 @@ def do_load(checkpoint_path):
     model = load_model(checkpoint_path)
 
     # SFDDetector.load_model(device)
-    detector = RetinaFace(gpu_id=0, model_path="checkpoints/mobilenet.pth", network="mobilenet")
+    detector = RetinaFace(gpu_id=0, model_path="/src/checkpoints/mobilenet.pth", network="mobilenet")
     # detector = RetinaFace(gpu_id=0, model_path="checkpoints/resnet50.pth", network="resnet50")
 
     detector_model = detector.model
