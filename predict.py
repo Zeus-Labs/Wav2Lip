@@ -93,6 +93,7 @@ class Predictor(BasePredictor):
             pass
 
         print("Is cuda available {} ?".format(torch.cuda.is_available()))
+        print(face)
         face_ext = os.path.splitext(face)[-1]
         print(face_ext)
         if face_ext not in [".mp4", ".mov", ".png" , ".jpg" , ".jpeg" , ".gif", ".mkv", ".webp"]:
