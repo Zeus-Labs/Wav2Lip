@@ -22,12 +22,18 @@ def make_mem_efficient(cls: BasePredictor):
 
     @wraps(old_setup)
     def new_setup(self, *args, **kwargs):
+        # Print statements to log args and kwargs
+        print("new_setup called with args:", args)
+        print("new_setup called with kwargs:", kwargs)
         ret = old_setup(self, *args, **kwargs)
         _move_to(self, "cpu")
         return ret
 
     @wraps(old_predict)
     def new_predict(self, *args, **kwargs):
+         # Print statements to log args and kwargs
+        print("new_predict called with args:", args)
+        print("new_predict called with kwargs:", kwargs)
         _move_to(self, "cuda")
         try:
             ret = old_predict(self, *args, **kwargs)
