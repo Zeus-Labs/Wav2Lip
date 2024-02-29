@@ -62,7 +62,7 @@ class Predictor(BasePredictor):
     cached_models = inference
 
     def setup(self):
-        inference.do_load("checkpoints/wav2lip_gan.pth")
+        inference.do_load("/src/checkpoints/wav2lip_gan.pth")
 
     def predict(
         self,
@@ -101,7 +101,7 @@ class Predictor(BasePredictor):
             raise ValueError(f'Unsupported audio format {audio_ext!r}')
 
         args = [
-            "--checkpoint_path", "checkpoints/wav2lip_gan.pth",
+            "--checkpoint_path", "/src/checkpoints/wav2lip_gan.pth",
             "--face", str(face),
             "--audio", str(audio),
             "--pads", *pads.split(" "),
